@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.js"></script>
+    <script src="ueditor.config.js"></script>
+    <script src="ueditor.all.js"></script>
+    <style>
+        .container{
+            width: 800px;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+纯文本的实现
+<div id="editor_container">
+
+</div>
+</div>
+<script>
+
+    UE.eh_getPlainTxtEditor = function(id, config){
+        config = $.extend({
+            toolbars: [],
+            initialFrameHeight: 80,
+            pasteplain: true,
+            elementPathEnabled: false,
+            enableContextMenu: false
+        }, config);
+        // 同个id ueditor 会认为统一，会使用之前的东西，故用 eh_createEditor
+        var editor = UE.getEditor(id, config);
+        editor.addInputRule(function(root){
+            // 过滤图片
+            $.each(root.getNodesByTagName('img'), function(i, node){
+                node.parentNode.removeChild(node, false);
+            });
+        });
+        return editor;
+    };
+</script>
+<script>
+    UE.eh_getPlainTxtEditor($('#editor_container')[0], {
+
+    });
+</script>
+</body>
+</html>
