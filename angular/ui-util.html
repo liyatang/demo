@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="angular.js"></script>
+    <script src="ui-utils.js"></script>
+</head>
+<body>
+
+<div ng-controller="MyCtrl">
+    <div>{{"my name is :name, age is :age, gender is :gender" | format: people}}</div>
+
+</div>
+
+<script>
+    var myModule = angular.module('myapp', ['ui.format']);
+    myModule.controller('MyCtrl', function ($scope) {
+        $scope.people = {
+           name: 'liyatang',age: 10,gender: 1
+        };
+    });
+
+
+</script>
+
+</body>
+</html>

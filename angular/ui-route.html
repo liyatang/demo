@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="angular.js"></script>
+    <script src="angular-ui-router.min.js"></script>
+</head>
+<body>
+
+<div ng-controller="MyCtrl">
+    <h1>{{demoname}}</h1>
+    <a href="#/p">#/people</a>
+    <a href="#/p/liyatang">#/people/liyatang</a>
+    <a href="#/c">#/c</a>
+    <section ui-view></section>
+    <!--<section ui-view></section>-->
+</div>
+
+<script>
+    var myModule = angular.module('myapp', ['ui.router']);
+    myModule.config(function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/p');
+        $stateProvider.state('people', {
+            url: '/p',
+            template: '<div>people   <div ui-view></div> </div>',
+            controller: function ($scope) {
+                $scope.$on('$stateChangeStart', function (event, toState, roParams, fromState, fromParams) {
+                    console.log(arguments);
+                })
+            }
+        }).state('people.who', {
+            url: '/:name',
+            template: '<div>people name:{{name}}, {{hello}}</div>',
+            controller: function ($scope, $stateParams, hello) {
+
+                $scope.name = $stateParams.name;
+                $scope.hello = hello;
+            },
+            resolve: {
+                hello: function () {
+                    return '你好吗'
+                }
+            }
+        }).state('c', {
+            url: '/c',
+            template: '<div>1111{{what}}</div>',
+//            controller: 'MyCtrl2',
+            controllerAs: 'MyCtrl2'
+        });
+    });
+    myModule.controller('MyCtrl', ['$scope', function ($scope) {
+        $scope.demoname = 'ui-route';
+    }]);
+    myModule.controller('MyCtrl2', ['$scope', function ($scope) {
+        $scope.what = 'asfasdfasdf';
+    }]);
+
+
+</script>
+
+</body>
+</html>
