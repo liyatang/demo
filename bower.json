@@ -1,0 +1,17 @@
+{
+  "name": "angular",
+  "main": "angular.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/liyatang/demo",
+  "authors": [
+    "liyatang <liyatang@qq.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

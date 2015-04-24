@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/underscore/underscore.js"></script>
+    <script src="../bower_components/restangular/dist/restangular.js"></script>
+
+</head>
+<body ng-app="myApp">
+
+<div ng-controller="MyCtrl">
+
+</div>
+
+<script>
+    var a = null;
+    var module = angular.module('myApp', ['restangular']);
+    module.factory('myInterceptor', function ($q) {
+        return {
+            'request': function (config) {
+                console.log(config);
+                a = config.transformRequest;
+                return config;
+            },
+            'response': function (config) {
+                console.log(config.config);
+                console.log(config.config.transformRequest == a);
+                return config;
+            }
+        }
+    });
+    module.config(function ($httpProvider, RestangularProvider) {
+        $httpProvider.interceptors.push('myInterceptor');
+        RestangularProvider.setBaseUrl('/demo/api');
+    });
+    module.controller('MyCtrl', ['$scope','Restangular', function ($scope, Restangular) {
+        var names = Restangular.one('names.json');
+        names.get().then(function (data) {
+            console.log(data);
+        });
+    }]);
+
+</script>
+
+</body>
+</html>
