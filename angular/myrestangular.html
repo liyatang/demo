@@ -6,7 +6,8 @@
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/underscore/underscore.js"></script>
-    <script src="../bower_components/restangular/dist/restangular.js"></script>
+    <!--<script src="../bower_components/restangular/dist/restangular.js"></script>-->
+    <script src="../bower_components/myrestangular/restangular.js"></script>
 
 </head>
 <body ng-app="myApp">
@@ -21,12 +22,23 @@
         RestangularProvider.setBaseUrl('/demo/api');
     });
     module.controller('MyCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
-        var names = Restangular.all('names');
-//        names.get({id: 1}).then(function (data) {
-//            console.log(data);
-//        });
+        var names = Restangular.one('names');
+        names.get({id: 1}).then(function (data) {
+            console.log(data);
+            var data = data;
+            data.one('haha').get().then(function (data) {
+                console.log(data);
+            });
+        });
 
-        names.post({name: 'liyatang'});
+        var a = Restangular.oneUrl('adsf', '/ad/');
+        a.one('xxx', 1234).get();
+
+        var people = Restangular.one('people');
+        people.post({name: 'liyatang'}).then(function (data) {
+            console.log(data);
+        });
+
     }]);
 
 </script>
