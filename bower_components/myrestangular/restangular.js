@@ -1,4 +1,9 @@
 /**
+ * myrestangular
+ */
+
+
+/**
  * Restful Resources service for AngularJS apps
  * @version v1.4.0 - 2015-04-03 * @link https://github.com/mgonto/restangular
  * @author Martin Gontovnikas <martin@gon.to>
@@ -522,9 +527,6 @@ restangular.provider('Restangular', function() {
           delete value.params;
         }
 
-        //if (config.isSafe(value.method)) {
-
-          
           resource[key] = function(){
             var def = $q.defer();
             $.ajax({
@@ -552,22 +554,6 @@ restangular.provider('Restangular', function() {
             });
             return def.promise;
           };
-          //resource[key] = function() {
-          //  return $http(_.extend(value, {
-          //    url: url
-          //  }));
-          //};
-
-        //} else {
-        //
-        //  resource[key] = function(data) {
-        //    return $http(_.extend(value, {
-        //      url: url,
-        //      data: data
-        //    }));
-        //  };
-        //
-        //}
       });
 
       return resource;
@@ -1191,7 +1177,6 @@ restangular.provider('Restangular', function() {
         var okCallback = function(response) {
           var resData = response.data;
           var fullParams = response.config.params;
-          //var elem = parseResponse(resData, operation, route, fetchUrl, response, deferred);
           var elem = resData;
           if (elem) {
 

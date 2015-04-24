@@ -13,7 +13,7 @@
 <body ng-app="myApp">
 
 <div ng-controller="MyCtrl">
-
+{{peoples}}
 </div>
 
 <script>
@@ -21,24 +21,36 @@
     module.config(function ($httpProvider, RestangularProvider) {
         RestangularProvider.setBaseUrl('/demo/api');
     });
-    module.controller('MyCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
-        var names = Restangular.one('names');
-        names.get({id: 1}).then(function (data) {
-            console.log(data);
-            var data = data;
-            data.one('haha').get().then(function (data) {
-                console.log(data);
-            });
-        });
+    module.controller('MyCtrl', ['$scope', 'Restangular', 'PeopleService', function ($scope, Restangular, PeopleService) {
+//        var names = Restangular.one('names');
+//        names.get({id: 1}).then(function (data) {
+//            console.log(data);
+//            var data = data;
+//            data.one('haha').get().then(function (data) {
+//                console.log(data);
+//            });
+//        });
+//
+//        var a = Restangular.oneUrl('adsf', '/ad/');
+//        a.one('xxx', 1234).get();
+//
+//        var people = Restangular.one('people');
+//        people.post({name: 'liyatang'}).then(function (data) {
+//            console.log(data);
+//        });
 
-        var a = Restangular.oneUrl('adsf', '/ad/');
-        a.one('xxx', 1234).get();
-
+        $scope.peoples = PeopleService.getList();
+    }]);
+    module.factory('PeopleService', ['Restangular', function (Restangular) {
         var people = Restangular.one('people');
-        people.post({name: 'liyatang'}).then(function (data) {
-            console.log(data);
-        });
-
+       return {
+           getList: function () {
+               return people.get().then(function (data) {
+                   console.log(data);
+                   return data.data;
+               });
+           }
+       }
     }]);
 
 </script>
