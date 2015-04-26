@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+</head>
+<body ng-app="myApp">
+
+<div ng-controller="MyCtrl">
+    -----
+    <div ng-repeat="p in peoples">
+        {{p}}
+    </div>
+    -----
+    {{peoplesList}}
+    -----
+    <div ng-repeat="pl in peoplesList">
+        {{pl}}
+    </div>
+
+
+    <div>names</div>
+    <div ng-repeat="n in names.data">
+        {{n}}
+    </div>
+</div>
+
+<script>
+    var module = angular.module('myApp', ['ngResource']);
+    module.controller('MyCtrl', ['$scope', 'PeopleService', 'NameService', function ($scope, PeopleService, NameService) {
+        $scope.names = NameService.get();
+
+        console.log(NameService.get());
+
+        PeopleService.getList().then(function (data) {
+            $scope.peoplesList = data.data.data;
+        });
+        console.log(PeopleService.getList());
+    }]);
+    module.factory('NameService', function ($resource) {
+        return $resource('/demo/api/names');
+    });
+    module.factory('PeopleService', ['$http', '$q', function ($http, $q) {
+
+        return {
+            get: function () {
+                var data = {};
+                setTimeout(function () {
+                    data.arr = [1, 2, 3, 4]
+                }, 1000);
+                return data;
+            },
+            getList: function () {
+                return $http.get('/demo/api/people', {
+                    params: {a: 1}
+                });
+            },
+            post: function () {
+
+            },
+            add: function () {
+
+            },
+            update: function () {
+
+            },
+            remove: function () {
+
+            }
+        }
+    }]);
+
+</script>
+
+</body>
+</html>

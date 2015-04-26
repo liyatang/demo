@@ -13,7 +13,9 @@
 <body ng-app="myApp">
 
 <div ng-controller="MyCtrl">
-{{peoples}}
+    <div>
+        {{peoples}}
+    </div>
 </div>
 
 <script>
@@ -40,17 +42,23 @@
 //        });
 
         $scope.peoples = PeopleService.getList();
+//        $scope.peoples.get(123);
     }]);
     module.factory('PeopleService', ['Restangular', function (Restangular) {
         var people = Restangular.one('people');
-       return {
-           getList: function () {
-               return people.get().then(function (data) {
-                   console.log(data);
-                   return data.data;
-               });
-           }
-       }
+        return {
+            getList: function () {
+                return people.get();
+//                return people.get().then(function (data) {
+//                    console.log(data);
+////                   return data.data;
+//                    return data;
+//                });
+            },
+            getListajax: function () {
+                return $http({});
+            }
+        }
     }]);
 
 </script>
