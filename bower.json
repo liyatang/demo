@@ -13,5 +13,10 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "jquery-hashchange": "*",
+    "jquery-migrate": "~1.2.1",
+    "history.js": "~1.8.0"
+  }
 }

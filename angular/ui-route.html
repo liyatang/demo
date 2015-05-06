@@ -23,11 +23,13 @@
         $urlRouterProvider.otherwise('/p');
         $stateProvider.state('people', {
             url: '/p',
-            template: '<div>people   <div ui-view></div> </div>',
+            template: '<div>{{sub}}   <div ui-view></div> </div>',
             controller: function ($scope) {
-                $scope.$on('$stateChangeStart', function (event, toState, roParams, fromState, fromParams) {
-                    console.log(arguments);
-                })
+                $scope.sub = '"people"';
+//                $scope.$on('$stateChangeStart', function (event, toState, roParams, fromState, fromParams) {
+//                    console.log(arguments);
+//                });
+                console.log('people');
             }
         }).state('people.who', {
             url: '/:name',
@@ -36,6 +38,7 @@
 
                 $scope.name = $stateParams.name;
                 $scope.hello = hello;
+                console.log('people.who');
             },
             resolve: {
                 hello: function () {
