@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div ng-controller="MyCtrl">
+
+</div>
+<script src="../bower_components/angular/angular.min.js"></script>
+<script>
+    var myApp = angular.module('myApp', []);
+    myApp.controller('MyCtrl', ['$q', function ($q) {
+        // 发现bug的案例
+
+        var def = $q.defer();
+
+
+//def.promise.then(function () {
+//    console.log('suc');
+//}).then(function () {
+//    console.log('suc');
+//}, function () {
+//    console.log('err');
+//});
+//def.resolve('yes'); // suc suc
+//def.reject('no'); // err
+
+
+//def.promise.then(function () {
+//    console.log('suc');
+//}, function () {
+//    console.log('err');
+//}).then(function () {
+//    console.log('suc');
+//}, function () {
+//    console.log('err');
+//});
+//def.resolve('yes'); // suc suc
+//def.reject('no'); // err suc
+
+
+def.promise.then(function () {
+    console.log('suc');
+    return $q.reject('no');
+}, function () {
+    console.log('err');
+    // return $q.resolve(''); // 在errcallback上没有resolve。但是succallback有。 这个时候吧$q打出来，可以看到是个函数。
+    return $q.reject('no');
+}).then(function () {
+    console.log('suc');
+}, function () {
+    console.log('err');
+});
+def.resolve('yes'); // suc err
+def.reject('no'); // err err
+
+
+
+    }]);
+
+
+</script>
+
+</body>
+</html>
