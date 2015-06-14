@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div ng-controller="MyCtrl">
+
+    <span ng-bind="name"></span>
+    <input type="text" ng-model="name" ng-keyup="onKey($event)"/>
+    <p></p>
+    <span ng-bind="name2"></span>
+    <input type="text" ng-model="name2" ng-keydown="onKey2($event)"/>
+</div>
+<script src="angular.js"></script>
+<script>
+    var myApp = angular.module('myApp', []);
+    myApp.controller('MyCtrl', function ($scope, $timeout) {
+        $scope.name = 'liyatang';
+
+        $scope.onKey = function(event){
+            console.log(event.type);
+            console.log($scope.name);
+        };
+
+        $scope.name2 = 'liyatang';
+
+        $scope.onKey2 = function(event){
+            $timeout(function () {
+                console.log(event.type);
+                console.log($scope.name2);
+            },1);
+        };
+    });
+</script>
+
+</body>
+</html>
