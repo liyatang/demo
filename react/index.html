@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../bower_components/react/react.js"></script>
+    <script src="../bower_components/react/JSXTransformer.js"></script>
+</head>
+<body>
+
+<div id="helloContainer"></div>
+
+<div id="testContainer"></div>
+<script>
+
+
+    var HelloClass  = React.createClass({
+        render: function () {
+
+            var word = 'Hello ' + this.props.name + '. Now time is ' + this.props.date;
+            return React.DOM.p(null, word);
+        }
+    });
+
+    var HelloFactory  = React.createFactory(HelloClass);
+
+    React.render(
+            HelloFactory({
+                name: 'liyatang', date: new Date()
+            }), document.getElementById('helloContainer'));
+</script>
+
+<script type="text/jsx" src="src/test.js"></script>
+</body>
+</html>

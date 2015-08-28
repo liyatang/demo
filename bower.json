@@ -17,6 +17,9 @@
   "devDependencies": {
     "jquery-hashchange": "*",
     "jquery-migrate": "~1.2.1",
-    "history.js": "~1.8.0"
+    "history.js": "~1.8.0",
+    "react": "~0.13.3",
+    "showdown": "~1.2.1",
+    "marked": "~0.3.5"
   }
 }
