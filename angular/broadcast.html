@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div ng-controller="MyCtrl">
+
+</div>
+
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="angular.js"></script>
+<script>
+    angular.module('myApp', []).controller('MyCtrl', function($scope){
+        $scope.$on('haha', function(){
+            console.log(arguments);
+        });
+    });
+
+    setTimeout(function () {
+        var $rootScope = angular.element('body').scope().$root;
+        $rootScope.$broadcast('haha', {name: 'xiaoming'});
+    }, 1000)
+
+</script>
+</body>
+</html>
