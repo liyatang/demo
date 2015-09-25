@@ -15,11 +15,13 @@
     "tests"
   ],
   "devDependencies": {
+    "history.js": "~1.8.0",
     "jquery-hashchange": "*",
     "jquery-migrate": "~1.2.1",
-    "history.js": "~1.8.0",
+    "marked": "~0.3.5",
     "react": "~0.13.3",
+    "seajs": "~3.0.0",
     "showdown": "~1.2.1",
-    "marked": "~0.3.5"
+    "zepto": "~1.1.6"
   }
 }

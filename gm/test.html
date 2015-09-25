@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="renderer" content="webkit">
+
+    <title>小农女</title>
+</head>
+<body class="body pc-adapt-product-search" data-haslogin=false>
+
+<script id="tplFavMoreDialogListStar" type="text/html">
+    <div class="fav-more-dialog-list-star">
+        <ul>
+            {{each data}}
+            <li class="{{if $value.hasStar}}star{{/if}}" data-id="{{$value.id}}">
+                <div>
+                    <span>{{$value.name}}</span>
+                    <i></i>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</script>
+<script>
+
+    var g_result = JSON.parse('');
+    var g_productInfo = {};
+    for (var i = 0; i < g_result.length; i++) {
+        g_productInfo[g_result[i].id] = g_result[i];
+    }
+
+    var g_config = {
+        city: '0',
+        isLogin: 'false'
+    };
+</script>
+</body>
+</html>

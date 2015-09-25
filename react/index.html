@@ -8,28 +8,51 @@
 </head>
 <body>
 
-<div id="helloContainer"></div>
-
-<div id="testContainer"></div>
-<script>
+<script type="text/jsx">
 
 
-    var HelloClass  = React.createClass({
+    //    var HelloClass = React.createClass({
+    //        render: function () {
+    //
+    //            var word = 'Hello ' + this.props.name + '. Now time is ' + this.props.date;
+    //            return React.DOM.p(null, word);
+    //        }
+    //    });
+    //
+    //    var HelloFactory = React.createFactory(HelloClass);
+    //
+    //    React.render(HelloFactory({
+    //        name: 'liyatang', date: new Date()
+    //    }), document.getElementById('helloContainer'));
+
+    var Box = React.createClass({
+        getInitialState: function () {
+            return {windowWidth: window.innerWidth};
+        },
+
+        handleResize: function (e) {
+            this.setState({windowWidth: window.innerWidth});
+        },
+
+        componentDidMount: function () {
+            window.addEventListener('resize', this.handleResize);
+        },
+
+        componentWillUnmount: function () {
+            window.removeEventListener('resize', this.handleResize);
+        },
+
         render: function () {
-
-            var word = 'Hello ' + this.props.name + '. Now time is ' + this.props.date;
-            return React.DOM.p(null, word);
+            return <div>Current window width: {this.state.windowWidth}</div>;
         }
     });
 
-    var HelloFactory  = React.createFactory(HelloClass);
+    React.render(<Box />, document.body);
 
-    React.render(
-            HelloFactory({
-                name: 'liyatang', date: new Date()
-            }), document.getElementById('helloContainer'));
+    var testElement = <Box />;
+
 </script>
 
-<script type="text/jsx" src="src/test.js"></script>
+<!--<script type="text/jsx" src="src/test.js"></script>-->
 </body>
 </html>

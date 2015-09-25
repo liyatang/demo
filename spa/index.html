@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+
+<div>
+    <button data-module="a">use a</button>
+    <button data-module="b">use b</button>
+    <button data-module="c">use c</button>
+</div>
+
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/seajs/dist/sea.js"></script>
+<script>
+    seajs.config({
+        base: './'
+    });
+
+    seajs.use('app');
+</script>
+</body>
+</html>
