@@ -15,6 +15,7 @@
     "tests"
   ],
   "devDependencies": {
+    "flux": "~2.1.1",
     "history.js": "~1.8.0",
     "jquery-hashchange": "*",
     "jquery-migrate": "~1.2.1",

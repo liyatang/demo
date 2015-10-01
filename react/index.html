@@ -5,54 +5,11 @@
     <title></title>
     <script src="../bower_components/react/react.js"></script>
     <script src="../bower_components/react/JSXTransformer.js"></script>
+    <script src="../bower_components/flux/dist/Flux.js"></script>
 </head>
 <body>
 
-<script type="text/jsx">
-
-
-    //    var HelloClass = React.createClass({
-    //        render: function () {
-    //
-    //            var word = 'Hello ' + this.props.name + '. Now time is ' + this.props.date;
-    //            return React.DOM.p(null, word);
-    //        }
-    //    });
-    //
-    //    var HelloFactory = React.createFactory(HelloClass);
-    //
-    //    React.render(HelloFactory({
-    //        name: 'liyatang', date: new Date()
-    //    }), document.getElementById('helloContainer'));
-
-    var Box = React.createClass({
-        getInitialState: function () {
-            return {windowWidth: window.innerWidth};
-        },
-
-        handleResize: function (e) {
-            this.setState({windowWidth: window.innerWidth});
-        },
-
-        componentDidMount: function () {
-            window.addEventListener('resize', this.handleResize);
-        },
-
-        componentWillUnmount: function () {
-            window.removeEventListener('resize', this.handleResize);
-        },
-
-        render: function () {
-            return <div>Current window width: {this.state.windowWidth}</div>;
-        }
-    });
-
-    React.render(<Box />, document.body);
-
-    var testElement = <Box />;
-
-</script>
-
+<script src="index.js"></script>
 <!--<script type="text/jsx" src="src/test.js"></script>-->
 </body>
 </html>
