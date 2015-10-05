@@ -26,6 +26,7 @@
     "node-libs-browser": "^0.5.2",
     "raw-loader": "^0.5.1",
     "react-transform-hmr": "^1.0.0",
+    "reflux": "^0.2.12",
     "style-loader": "^0.12.3",
     "todomvc-app-css": "^2.0.1",
     "webpack": "^1.9.11",
