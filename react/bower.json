@@ -1,0 +1,22 @@
+{
+  "name": "react",
+  "main": "index.js",
+  "version": "0.0.0",
+  "authors": [
+    "liyatang <liyatang@xiaonongnv.com>"
+  ],
+  "description": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "reflux": "~0.2.12"
+  }
+}
