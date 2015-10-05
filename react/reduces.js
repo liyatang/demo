@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import actionType from './action-types';
 import moment from 'moment';
 
-var todos = function (state = [], action) {
+var todos = function (state = [], action = {}) {
 
     switch (action.type) {
         case actionType.TODO_ADD:
