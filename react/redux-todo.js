@@ -1,12 +1,10 @@
 {
-    let React = window.React;
-    let Redux = window.Redux;
+    let {React, Redux, ReactRedux} = window;
     let bindActionCreators = Redux.bindActionCreators;
-    let Provider = ReactRedux.Provider;
-    let connect = ReactRedux.connect;
+    let {Provider, connect} = ReactRedux;
 
     const initialtate = {
-        todos: []
+        todos: [{text: 'default'}]
     };
 
     let reducer = function (state = initialtate, action = {}) {
@@ -38,7 +36,6 @@
 
     class TodoApp extends React.Component {
         render() {
-
             return (
                 <div>
                     <button type="button" onClick={this.handleAdd.bind(this)}>add</button>
@@ -48,7 +45,6 @@
                 </div>
             );
         }
-
         handleAdd() {
             const {dispatch} = this.props;
             const actions = bindActionCreators(Actions, dispatch);
