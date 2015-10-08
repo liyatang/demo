@@ -1,13 +1,13 @@
 {
     let {React, Redux, ReactRedux} = window;
-    let bindActionCreators = Redux.bindActionCreators;
+    let {bindActionCreators, combineReducers} = Redux;
     let {Provider, connect} = ReactRedux;
 
     const initialtate = {
         todos: [{text: 'default'}]
     };
 
-    let reducer = function (state = initialtate, action = {}) {
+    let todos = function (state = initialtate, action = {}) {
         switch (action.type) {
             case 'add':
                 return {
@@ -32,7 +32,9 @@
         }
     };
 
-    let store = Redux.createStore(reducer);
+    let store = Redux.createStore(combineReducers({
+        todos
+    }));
 
     class TodoApp extends React.Component {
         render() {
@@ -45,12 +47,19 @@
                 </div>
             );
         }
+
         handleAdd() {
             const {dispatch} = this.props;
             const actions = bindActionCreators(Actions, dispatch);
             actions.addTodo('work');
         }
     }
+
+    TodoApp.propTypes = {
+        todos: React.PropTypes.array.isRequire
+    };
+
+
 
     let WrapTodoApp = connect(function (state) {
         return {
@@ -62,6 +71,6 @@
         <Provider store={store}>
             {() => <WrapTodoApp></WrapTodoApp>}
         </Provider>,
-        document.getElementById('reduxTest')
+        document.getElementById('reduxTodo')
     );
 }

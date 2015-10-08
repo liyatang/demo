@@ -1,13 +1,14 @@
 {
     let {Reflux, React} = window;
 
-    var Actions = Reflux.createActions([
-        'addTodo'
+    var TodoActions = Reflux.createActions([
+        'addTodo',
+        'getAll'
     ]);
 
-    var Store = Reflux.createStore({
+    var TodoStore = Reflux.createStore({
         todos: [{text: 'default'}],
-        listenables: [Actions],
+        listenables: [TodoActions],
         onAddTodo: function (text) {
             this.todos.push({
                 text: text
@@ -22,16 +23,16 @@
     class TodoApp extends React.Component {
         constructor(props) {
             super(props);
-            this.state = {todos: Store.getAll()};
-            this.mixins = [Reflux.connect(Store, 'todos')];
+            this.state = {todos: TodoStore.getAll()};
+            this.mixins = [Reflux.connect(TodoStore, 'todos')];
         }
 
         componentDidMount() {
-            this.unsubscribe = Store.listen(this.onStatusChange.bind(this));
+            this.unsubscribe = TodoStore.listen(this.onStatusChange.bind(this));
         }
 
         onStatusChange(status) {
-            console.log(Store);
+            console.log(TodoStore);
             this.setState({
                 todos: status
             });
@@ -49,9 +50,12 @@
         }
 
         handleAdd() {
-            Actions.addTodo('work');
+            TodoActions.addTodo('work');
         }
     }
 
-    React.render(<TodoApp />, document.getElementById('refluxTest'));
+
+
+
+    React.render(<TodoApp />, document.getElementById('refluxTodo'));
 }
