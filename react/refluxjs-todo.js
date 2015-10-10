@@ -10,10 +10,13 @@
         todos: [{text: 'default'}],
         listenables: [TodoActions],
         onAddTodo: function (text) {
+            let t = this;
             this.todos.push({
                 text: text
             });
-            this.trigger(this.todos);
+            setTimeout(function () {
+                t.trigger(t.todos);
+            }, 1000);
         },
         getAll: function () {
             return this.todos;
