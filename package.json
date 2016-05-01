@@ -7,10 +7,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-react": "^3.0.1",
-    "react": "file:react"
-  }
+  "license": "ISC"
 }

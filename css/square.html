@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .square {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            background: whitesmoke;
+            position: relative;
+        }
+
+        .square_inner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+简单用
+<div style="width:20%">
+    <div class="square">
+        正方形
+    </div>
+</div>
+
+如果内容有边距没有问题
+<div style="width:20%">
+    <div class="square">
+        <div style="margin-top:10px;padding: 10px;">
+            margin-top: 10px; padding: 10px;
+        </div>
+    </div>
+</div>
+
+如果内容有百分比的高宽，貌似就有问题了。于是就有了下面的处理方式。
+<div style="width:20%">
+    <div class="square">
+        <div style="height: 50%;width: 50%;background-color: wheat;">
+            height: 50%;width: 50%;
+        </div>
+    </div>
+</div>
+
+能够处理正确的高宽百分比。 是不是很棒。代码显得有点多，如果是ng的话封个指令就完事了。
+<div style="width:20%">
+    <div class="square">
+        <div class="square_inner">
+            <div style="height: 50%;width: 50%;background-color: wheat;">
+                height: 50%;width: 50%;
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
