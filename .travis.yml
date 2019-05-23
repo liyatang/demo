@@ -12,4 +12,4 @@ install:
 
 script:
   - npm version patch
-  - git add --all; git commit -m '[ci skip] test push '; git push -f 'https://${GH_TOKEN}@github.com/gmfe/react-gm.git' master:master
+  - git add --all; git commit -m '[ci skip] test push '; git push -f 'git://${GH_TOKEN}@github.com/gmfe/react-gm.git' master:master
