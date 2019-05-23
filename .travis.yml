@@ -13,4 +13,4 @@ script:
   - git remote get-url origin
   - git add --all
   - git commit -m '[ci skip] test push '
-  - git push -f 'https://liyatang:${GITHUB_TOKEN}@github.com/liyatang/demo.git' master:master
+  - git push -f 'https://liyatang:${GITHUB_TOKEN}@github.com/liyatang/demo.git' master:test-master
