@@ -9,4 +9,4 @@ install:
 script:
   - npm version patch
   - git remote get-url origin
-  - git add --all; git commit user.name='liyatang' user.email='liyatang@qq.com' -m '[ci skip] test push '; git push -f 'https://${GH_TOKEN}@github.com/liyatang/demo.git' master:master
+  - git add --all; git commit user.name='liyatang' user.email='liyatang@qq.com' -m '[ci skip] test push '; git push -f 'https://liyatang:706db70452cfe84b72069cb2a1f680c56844bb34@github.com/liyatang/demo.git' master:master
