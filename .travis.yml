@@ -13,4 +13,4 @@ install:
 script:
   - npm version patch
   - git remote get-url origin
-  - git add --all; git commit -m '[ci skip] test push '; git push -f 'https://${GH_TOKEN}@github.com/gmfe/react-gm.git' master:master
+  - git add --all; git commit -m '[ci skip] test push '; git push -f 'https://${GH_TOKEN}@github.com/liyatang/demo.git' master:master
