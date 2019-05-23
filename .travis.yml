@@ -3,14 +3,10 @@ language: node_js
 node_js:
   - 'lts/*'
 
-before_install:
-  - git config --global user.name 'liyatang'
-  - git config --global user.email 'liyatang@guanmai.cn'
-
 install:
   - npm install
 
 script:
   - npm version patch
   - git remote get-url origin
-  - git add --all; git commit -m '[ci skip] test push '; git push -f 'https://${GH_TOKEN}@github.com/liyatang/demo.git' master:master
+  - git add --all; git commit user.name='liyatang' user.email='liyatang@qq.com' -m '[ci skip] test push '; git push -f 'https://${GH_TOKEN}@github.com/liyatang/demo.git' master:master
